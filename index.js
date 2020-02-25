@@ -18,12 +18,13 @@ import { createViewPortConfig } from 'react-native-responsive-view-port';
 const { vw } = createViewPortConfig();
 
 export interface TableProps {
+  containerStyle?: Object;
   headerConfig: Array<any>;
   bodyConfig: Array<any>;
 }
 
 export interface ColumnProps {
-  headerElement: Array<any>;
+  headerElement: Object;
   bodyConfig: Array<any>;
 }
 
