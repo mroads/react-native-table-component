@@ -26,38 +26,41 @@ const styles = StyleSheet.create({
   container: { padding: 26 * vw, height: 700 },
 });
 
+const TableComponent = (props: Props) => {
+  const { headerElement, bodyConfig } = props;
+  return (
+    <View key={`header-${headerElement.text}`} style={headerElement.containerStyle}>
+      <Text numberOfLines={1} style={headerElement.textStyle}>
+        {headerElement.text}
+      </Text>
+      {bodyConfig && bodyConfig.map((bodyElement, rowIndex) => (
+        headerElement.renderCell ? (
+          headerElement.key ?
+            headerElement.renderCell(bodyElement[headerElement.key], bodyElement) :
+            headerElement.renderCell(bodyElement, bodyConfig, rowIndex)
+        ) : (
+            <Text numberOfLines={1} style={headerElement.textStyle}>
+              {bodyElement[headerElement.key]}
+            </Text>
+          )
+      ),
+      )}
+    </View>
+  );
+};
+
 const Table = (props: Props) => {
   const { containerStyle } = props;
   const renderBody = () => {
     const { bodyConfig, headerConfig } = props;
-    return headerConfig && headerConfig.map((headerElement, index) => (
-      <View key={`header-${headerElement.text}`} style={headerElement.containerStyle}>
-        <Text numberOfLines={1} style={headerElement.textStyle}>
-          {headerElement.text}
-        </Text>
-        {bodyConfig && bodyConfig.map((bodyElement, rowIndex) => (
-          headerElement.renderCell ? (
-            headerElement.key ?
-              headerElement.renderCell(bodyElement[headerElement.key], bodyElement) :
-              headerElement.renderCell(bodyElement, bodyConfig, rowIndex)
-          ) : (
-              <Text numberOfLines={1} style={headerElement.textStyle}>
-                {bodyElement[headerElement.key]}
-              </Text>
-            )
-        ),
-        )}
-      </View>
-    ));
+    return headerConfig && headerConfig.map((headerElement) => <TableComponent headerElement={headerElement} bodyConfig={bodyConfig}/>);
   };
   return (
-    <View contentContainerStyle={[containerStyle || styles.container]} scrollEnabled>
-      <ScrollView>
-        <View style={{ flexDirection: 'row'  }}>
-          {renderBody()}
-        </View>
-      </ScrollView>
-    </View>
+    <ScrollView contentContainerStyle={[containerStyle || styles.container]}>
+      <View style={{ flexDirection: 'row' }}>
+        {renderBody()}
+      </View>
+    </ScrollView>
 );
 }
 
