@@ -34,56 +34,11 @@ const fonts = {
 
 const styles = StyleSheet.create({
   container: { padding: 26 * vw, height: 700 },
-  tableHeaderText: { color: '#4a4a4a', fontSize: fonts.headerText, textAlign: 'center' },
-  tableBodyText: { color: '#4a4a4a', fontSize: fonts.bodyText, textAlign: 'center' },
-  gridColPadding: {
-    paddingHorizontal: 13.3 * vw,
-    paddingVertical: 6 * vh,
-    borderLeftWidth: 0.5,
-    borderRightWidth: 0.5,
-    borderTopWidth: 0,
-    borderBottomWidth: 0,
-    borderColor: '#CFCFC0',
-  },
-  row: {
-    borderWidth: 1,
-    borderColor: '#CFCFC0',
-    minHeight: 67 * vh,
-    borderTopWidth: 0,
-  },
-  evenRow: { backgroundColor: '#FFFFFF' },
-  oddRow: { backgroundColor: '#EAEAEA' },
-
-  resultCol: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center' },
-  resultIcon: { marginHorizontal: 13.3 * vw, height: 27 * vh, width: 27 * vw },
 });
 
 
-const TableColumn = ({header,body})=>{
-  return (
-    <Col key={`header-${header.text}`} style={header.containerStyle}>
-        <Text numberOfLines={1} style={header.textStyle}>
-          {header.text}
-        </Text>
-        {bodyConfig.map((bodyElement, rowIndex) => (
-          // eslint-disable-next-line no-nested-ternary
-          header.renderCell ? (
-            header.key ?
-            header.renderCell(bodyElement[header.key], bodyElement) :
-            header.renderCell(bodyElement, bodyConfig, rowIndex)
-          ) : (
-              <Text numberOfLines={1} style={header.textStyle}>
-                {bodyElement[header.key]}
-              </Text>
-            )
-        ),
-        )}
-      </Col>
-  )
-}
-
 // eslint-disable-next-line react/prefer-stateless-function
-export default class CustomizedTable extends React.Component<Props> {
+export default class Table extends React.Component<Props> {
   renderBody = () => {
     const { bodyConfig, headerConfig } = this.props;
     return headerConfig && headerConfig.map((headerElement, index) => (
