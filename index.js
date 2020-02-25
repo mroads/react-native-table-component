@@ -17,8 +17,13 @@ import { createViewPortConfig } from 'react-native-responsive-view-port';
 
 const { vw } = createViewPortConfig();
 
-export interface Props {
+export interface TableProps {
   headerConfig: Array<any>;
+  bodyConfig: Array<any>;
+}
+
+export interface ColumnProps {
+  headerElement: Array<any>;
   bodyConfig: Array<any>;
 }
 
@@ -26,7 +31,7 @@ const styles = StyleSheet.create({
   container: { padding: 26 * vw, height: 700 },
 });
 
-const TableComponent = (props: Props) => {
+const Column = (props: ColumnProps) => {
   const { headerElement, bodyConfig } = props;
   return (
     <View key={`header-${headerElement.text}`} style={headerElement.containerStyle}>
@@ -49,11 +54,11 @@ const TableComponent = (props: Props) => {
   );
 };
 
-const Table = (props: Props) => {
+const Table = (props: TableProps) => {
   const { containerStyle } = props;
   const renderBody = () => {
     const { bodyConfig, headerConfig } = props;
-    return headerConfig && headerConfig.map((headerElement) => <TableComponent headerElement={headerElement} bodyConfig={bodyConfig}/>);
+    return headerConfig && headerConfig.map((headerElement) => <Column headerElement={headerElement} bodyConfig={bodyConfig}/>);
   };
   return (
     <ScrollView contentContainerStyle={[containerStyle || styles.container]}>

@@ -39,7 +39,6 @@
     "react-native": "^0.61.5"
   },
   "dependencies": {
-    "native-base": "^2.13.8",
     "react-native-responsive-view-port": "^1.0.7"
   },
   "bugs": {
