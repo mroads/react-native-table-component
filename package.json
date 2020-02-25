@@ -1,5 +1,5 @@
 {
-  "name": "react-native-table-component",
+  "name": "react-native-table-component-mroads",
   "title": "React Native Table Component",
   "version": "1.0.1",
   "description": "TODO",
@@ -15,13 +15,9 @@
   "keywords": [
     "react-native"
   ],
-  "author": {
-    "name": "Your Name",
-    "email": "yourname@email.com"
-  },
+  "author": "Your Name <yourname@email.com>",
   "license": "MIT",
   "licenseFilename": "LICENSE",
-  "readmeFilename": "README.md",
   "peerDependencies": {
     "react": "^16.8.1",
     "react-native": ">=0.60.0-rc.0 <1.0.x"
@@ -44,5 +40,12 @@
   },
   "dependencies": {
     "native-base": "^2.13.8"
+  },
+  "bugs": {
+    "url": "https://github.com/github_account/react-native-table-component/issues"
+  },
+  "homepage": "https://github.com/github_account/react-native-table-component#readme",
+  "directories": {
+    "example": "example"
   }
 }
