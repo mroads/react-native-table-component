@@ -17,7 +17,7 @@ import {
 import {
   Colors,
 } from 'react-native/Libraries/NewAppScreen';
-import CustomTable from './src/table/index';
+import Table from './src/table/index';
 
 
 class App extends React.Component {
@@ -102,9 +102,9 @@ class App extends React.Component {
       renderCell: data => (
         <View style={styles.tableData}>
           <Button
-          title="Remove"
-          color="red"
-          onPress={() => this.removeEntryHandler(data)}
+            title="Remove"
+            color="red"
+            onPress={() => this.removeEntryHandler(data)}
         />
         </View>
       ),
@@ -167,7 +167,7 @@ class App extends React.Component {
     const { tableData, selectedState } = this.state;
     return(
       <View style={{ flex: 1 }}>
-        <CustomTable 
+        <Table 
           headerConfig={this.tableHead}
           bodyConfig={tableData}
         />
