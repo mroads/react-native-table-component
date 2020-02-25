@@ -7,12 +7,12 @@ This is a custom table component which can be used to create a tabular data of n
 Use the package manager to install.
 
 ```bash
-`$ npm install react-native-table-component --save`
+`$ npm install react-native-table-component-mroads --save`
 ```
  or
 
 ```bash
-`$ yarn add react-native-table-component`
+`$ yarn add react-native-table-component-mroads`
 ```
 ## Usage
 

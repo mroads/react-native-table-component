@@ -17,7 +17,7 @@ import {
 import {
   Colors,
 } from 'react-native/Libraries/NewAppScreen';
-import Table from './src/table/index';
+import Table from 'react-native-table-component-mroads';
 
 
 class App extends React.Component {
