@@ -42,7 +42,7 @@ const Column = (props: ColumnProps) => {
       {bodyConfig && bodyConfig.map((bodyElement, rowIndex) => (
         headerElement.renderCell ? (
           headerElement.key ?
-            headerElement.renderCell(bodyElement[headerElement.key], bodyElement) :
+            headerElement.renderCell(bodyElement[headerElement.key], bodyElement, rowIndex) :
             headerElement.renderCell(bodyElement, bodyConfig, rowIndex)
         ) : (
             <Text numberOfLines={1} style={headerElement.textStyle}>
