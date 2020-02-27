@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
 const Column = (props: ColumnProps) => {
   const { headerElement, bodyConfig } = props;
   return (
-    <View key={`header-${headerElement.text}`} style={headerElement.containerStyle}>
+    <View style={headerElement.containerStyle}>
       <Text numberOfLines={1} style={headerElement.textStyle}>
         {headerElement.text}
       </Text>
@@ -45,7 +45,7 @@ const Column = (props: ColumnProps) => {
             headerElement.renderCell(bodyElement[headerElement.key], bodyElement, rowIndex) :
             headerElement.renderCell(bodyElement, bodyConfig, rowIndex)
         ) : (
-            <Text numberOfLines={1} style={headerElement.textStyle}>
+            <Text key={`headerText${rowIndex}`} numberOfLines={1} style={headerElement.textStyle}>
               {bodyElement[headerElement.key]}
             </Text>
           )
@@ -59,7 +59,7 @@ const Table = (props: TableProps) => {
   const { containerStyle } = props;
   const renderBody = () => {
     const { bodyConfig, headerConfig } = props;
-    return headerConfig && headerConfig.map((headerElement) => <Column headerElement={headerElement} bodyConfig={bodyConfig}/>);
+    return headerConfig && headerConfig.map((headerElement) => <Column key={`headerText${headerElement.key}`} headerElement={headerElement} bodyConfig={bodyConfig}/>);
   };
   return (
     <ScrollView contentContainerStyle={[containerStyle || styles.container]}>
