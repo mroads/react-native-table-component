@@ -7,19 +7,39 @@ This is a custom table component which can be used to create a tabular data of n
 Use the package manager to install.
 
 ```bash
-`$ npm install react-native-table-component-mroads --save`
+$ npm install react-native-table-component-mroads --save
 ```
  or
 
 ```bash
-`$ yarn add react-native-table-component-mroads`
+$ yarn add react-native-table-component-mroads
 ```
 ## Usage
 
 | Prop           | Required|     Default     |   Type   | Description                                                                                                 |
 | :---------------- | :-------------: | :-------------: | :------: | :---------------------------------------------------------------------------------------------------------- |
-| headerConfig     |     true      |     -      |  `Array`  | It is an array of the number of columns that is going to be present in the table.|
-| bodyConfig     |     true      |     -      |  `Array`  | It is an array of Objects containing the entries that needs to go in the table.|
+| header     |     true      |     -      |  `Array<header>`  | It is an array of the number of columns that is going to be present in the table.|
+| data     |     true      |     -      |  `Array<data>`  | It is an array of Objects containing the entries that needs to go in the table.|
+| containerStyle     |     false      |     -      |  -  | The style of the container in which the table exists.|
+
+Description of the Props passed:
+
+1. header: It is an array of the number of columns you are going to have in your table. Refer below the structure of the Array that needs to be maintained. Make sure you use the same name of the items referred below.
+
+|Property|Description|Type| 
+| :---------------- | :-------------: | :-------------: | 
+| text | The name of the column you want |   String    | 
+| containerStyle    |   The style of the individual column you want     |     Object      |  
+|renderCell    |   A callback function that gets executed for every individual entry of the column   |     Component     |  
+|key    |   A unique value that identifies every single column in the DOM.   |     -     |  
+
+2. data: It is an array of key value pairs that contain the entries of a single row.
+
+|property|description|
+| :---------------- | :-------------: |
+|{ Col1.key: "value you give" }, | It shohuld be of the same type as of the header. |
+NOTE: The number of key value pairs should be equal to the number of columns you have.
+
 
 ## Example
 ![](https://s5.gifyu.com/images/ezgif.com-video-to-gif-11255917ab9fa8769.gif)
