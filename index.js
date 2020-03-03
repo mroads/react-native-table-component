@@ -56,13 +56,13 @@ const Column = (props: ColumnProps) => {
 };
 
 const Table = (props: TableProps) => {
-  const { containerStyle } = props;
+  const { containerStyle, ...remainingProps } = props;
   const renderBody = () => {
     const { bodyConfig, headerConfig } = props;
     return headerConfig && headerConfig.map((headerElement) => <Column key={`headerText${headerElement.key}`} headerElement={headerElement} bodyConfig={bodyConfig}/>);
   };
   return (
-    <ScrollView contentContainerStyle={[containerStyle || styles.container]}>
+    <ScrollView {...remainingProps} contentContainerStyle={[containerStyle || styles.container]}>
       <View style={{ flexDirection: 'row' }}>
         {renderBody()}
       </View>
