@@ -12,7 +12,7 @@
  */
 
 import React from 'react';
-import { StyleSheet, ScrollView, Text, View } from 'react-native';
+import { StyleSheet, ScrollView, Text, View, TouchableOpacity } from 'react-native';
 import { createViewPortConfig } from 'react-native-responsive-view-port';
 
 const { vw } = createViewPortConfig();
@@ -33,9 +33,9 @@ const styles = StyleSheet.create({
 });
 
 const Column = (props: ColumnProps) => {
-  const { headerElement, bodyConfig } = props;
+  const { headerElement, bodyConfig, onPress } = props;
   return (
-    <View style={headerElement.containerStyle}>
+    <TouchableOpacity style={headerElement.containerStyle} onPress={() => onPress && onPress(headerElement)}>
       <Text numberOfLines={1} style={headerElement.textStyle}>
         {headerElement.text}
       </Text>
@@ -51,23 +51,30 @@ const Column = (props: ColumnProps) => {
           )
       ),
       )}
-    </View>
+    </TouchableOpacity>
   );
 };
 
 const Table = (props: TableProps) => {
   const { containerStyle, ...remainingProps } = props;
+
+  const onHeaderElementPress = ele => {
+    const { onHeaderPress } = props;
+    onHeaderPress && onHeaderPress(ele);
+  }
+
   const renderBody = () => {
     const { bodyConfig, headerConfig } = props;
-    return headerConfig && headerConfig.map((headerElement) => <Column key={`headerText${headerElement.key}`} headerElement={headerElement} bodyConfig={bodyConfig}/>);
+    return headerConfig && headerConfig.map((headerElement) => <Column key={`headerText${headerElement.key}`} headerElement={headerElement} bodyConfig={bodyConfig} onPress={ele => onHeaderElementPress(ele)} />);
   };
+
   return (
     <ScrollView {...remainingProps} contentContainerStyle={[containerStyle || styles.container]}>
       <View style={{ flexDirection: 'row' }}>
         {renderBody()}
       </View>
     </ScrollView>
-);
+  );
 }
 
 export default Table;
