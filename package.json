@@ -36,7 +36,7 @@
     "eslint-plugin-standard": "^4.0.1",
     "flow-bin": "^0.118.0",
     "react": "^16.9.0",
-    "react-native": "^0.61.5"
+    "react-native": "^0.62.3"
   },
   "dependencies": {
     "react-native-responsive-view-port": "^1.0.7"
